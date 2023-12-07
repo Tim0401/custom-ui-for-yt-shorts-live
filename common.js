@@ -93,6 +93,7 @@ ytd-watch-metadata {
     display: none;
 }
 `
+const YOUTUBE_SHORTS_LIVE_CLASS_NAME = "youtube-shorts-live";
 
 /**
  * Utility function to add CSS in multiple passes.
@@ -101,13 +102,13 @@ ytd-watch-metadata {
 function addStyle(styleString) {
     const style = document.createElement('style');
     style.textContent = styleString;
-    style.classList.add("youtube-shorts-live");
+    style.classList.add(YOUTUBE_SHORTS_LIVE_CLASS_NAME);
     document.head.append(style);
 }
 
 // 追加したスタイルの削除
 const remove = () => {
-    Array.from(document.getElementsByClassName("youtube-shorts-live") ?? []).forEach((e) => {
+    Array.from(document.getElementsByClassName(YOUTUBE_SHORTS_LIVE_CLASS_NAME) ?? []).forEach((e) => {
         console.debug("Remove style for yt short");
         e.remove()
     });
