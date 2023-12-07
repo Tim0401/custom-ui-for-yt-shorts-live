@@ -14,6 +14,12 @@
 It is unstable because it was created for personal use.
 */
 
+// メイン処理
+const process = () => {
+    console.debug("Content changed");
+    remove();
+    add(window.location.href);
+}
+
 // ページ遷移時に発火する
-// processはcommon.jsにて定義済
 document.addEventListener("yt-navigate-finish", process);
