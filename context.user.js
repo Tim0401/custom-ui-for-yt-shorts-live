@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Custom UI for YouTube Shorts Live (Context Menu)
-// @version      0.2
+// @version      0.3
 // @namespace    https://gist.github.com/Tim0401
 // @description  Custon UI for watching YouTube Shorts style live stream
 // @author       Tim0401
@@ -16,8 +16,8 @@ It is unstable because it was created for personal use.
 */
 
 // toggle
-if (document.getElementsByClassName(YOUTUBE_SHORTS_LIVE_CLASS_NAME)) {
-  remove();
-} else {
+if (document.getElementsByClassName(YOUTUBE_SHORTS_LIVE_CLASS_NAME)?.length === 0) {
   add();
+} else {
+  remove();
 }
