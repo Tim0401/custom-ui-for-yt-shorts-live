@@ -124,8 +124,8 @@ const detectAndApply = (v) => {
     return false;
 }
 
-// 前処理と更新
-const update = (url) => {
+// 前処理と追加
+const add = (url) => {
     if (!url.includes("https://www.youtube.com/watch")) return;
     // 縦型動画ならスタイルを適用する
     const vs = document.getElementsByClassName("video-stream html5-main-video");
@@ -139,11 +139,4 @@ const update = (url) => {
              once: true,
          });
     }
-}
-
-// メイン処理
-const process = () => {
-    console.debug("Content changed");
-    remove();
-    update(window.location.href);
 }
