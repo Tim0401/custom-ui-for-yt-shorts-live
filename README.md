@@ -1,6 +1,6 @@
 # custom-ui-for-yt-shorts-live
 
-Userscripts for Tampermonkey
+Userscripts for [Tampermonkey](https://www.tampermonkey.net/)
 
 ## Motivation
 
