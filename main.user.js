@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Custom UI for YouTube Shorts Live
-// @version      0.2
+// @version      0.3
 // @namespace    https://gist.github.com/Tim0401
 // @description  Custon UI for watching YouTube Shorts style live stream
 // @author       Tim0401
-// @match        https://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
+// @match        https://www.youtube.com/*
 // @require      https://raw.githubusercontent.com/Tim0401/custom-ui-for-yt-shorts-live/main/common.js
 // @grant        none
 // ==/UserScript==
