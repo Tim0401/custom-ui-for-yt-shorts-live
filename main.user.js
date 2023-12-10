@@ -9,6 +9,7 @@
 // @require      https://raw.githubusercontent.com/Tim0401/custom-ui-for-yt-shorts-live/main/common.js
 // @grant        none
 // ==/UserScript==
+//@ts-check
 
 /**
 It is unstable because it was created for personal use.
