@@ -88,6 +88,9 @@ ytd-watch-flexy[flexy] #primary.ytd-watch-flexy:has(#chat) {
     min-width: 300px;
     height: 95vh !important;
 }
+#secondary {
+    flex-grow: 1;
+}
 
 /* オーバーレイUIの調整 */
 .ytp-chrome-bottom {
