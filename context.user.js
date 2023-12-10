@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Custom UI for YouTube Shorts Live (Context Menu)
-// @version      0.4.1
+// @version      0.5.0
 // @namespace    https://github.com/Tim0401
 // @description  Custon UI for watching YouTube Shorts style live stream
 // @author       Tim0401
@@ -10,6 +10,7 @@
 // @require      https://raw.githubusercontent.com/Tim0401/custom-ui-for-yt-shorts-live/main/common.js
 // @grant        none
 // ==/UserScript==
+//@ts-check
 
 /**
 It is unstable because it was created for personal use.

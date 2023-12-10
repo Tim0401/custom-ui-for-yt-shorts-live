@@ -1,5 +1,7 @@
+//@ts-check
+
 // YouTubeに追加で適用するスタイル
-const s = `
+const s = (aspectRatio = "9 / 16") => (`
 body {
     overflow-x: hidden;
     overflow-y: hidden;
@@ -34,7 +36,7 @@ ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
 /* ビデオサイズに伴うコンテナの調整 */
 #player, #primary-inner, #container, #ytd-player, #player-container, #player-container-inner, #player-container-outer, #cinematics-container, .html5-video-player, .html5-video-container {
     height: 100vh !important;
-    aspect-ratio: 9 / 16;
+    aspect-ratio: ${aspectRatio};
 }
 
 #ytd-player {
@@ -92,21 +94,24 @@ ytd-watch-metadata {
 .ytp-progress-bar-container{
     display: none;
 }
-`
+`);
+
 const YOUTUBE_SHORTS_LIVE_CLASS_NAME = "youtube-shorts-live";
 
 /**
  * Utility function to add CSS in multiple passes.
  * @param {string} styleString
  */
-function addStyle(styleString) {
+const addStyle = (styleString) => {
     const style = document.createElement('style');
     style.textContent = styleString;
     style.classList.add(YOUTUBE_SHORTS_LIVE_CLASS_NAME);
     document.head.append(style);
 }
 
-// 追加したスタイルの削除
+/**
+ * 追加したスタイルの削除
+ */
 const remove = () => {
     Array.from(document.getElementsByClassName(YOUTUBE_SHORTS_LIVE_CLASS_NAME) ?? []).forEach((e) => {
         console.debug("Remove style for yt short");
@@ -114,18 +119,27 @@ const remove = () => {
     });
 }
 
-// 縦型動画の判定とスタイルの適用
+/**
+ * 縦型動画の判定とスタイルの適用
+ * @param {HTMLVideoElement} v 
+ * @returns 
+ */
 const detectAndApply = (v) => {
     console.debug("Check if current video is yt short");
     if (v.offsetHeight > v.offsetWidth) {
         console.debug("Apply style for yt short ");
-        addStyle(s);
+        addStyle(s(`${v.offsetWidth} / ${v.offsetHeight}`));
         return true;
     }
     return false;
 }
 
-// 前処理と追加
+
+/**
+ * 前処理と追加
+ * @param {string} url 
+ * @returns 
+ */
 const add = (url) => {
     if (!url.includes("https://www.youtube.com/watch")) return;
     // 縦型動画ならスタイルを適用する
@@ -135,9 +149,11 @@ const add = (url) => {
 
     //  適用失敗した場合は、イベントを待って再適用する
     const v = vs[0];
-    if (!detectAndApply(v)) {
-         v.addEventListener('loadedmetadata', () => detectAndApply(v), {
-             once: true,
-         });
+    if (v instanceof HTMLVideoElement) {
+        if (!detectAndApply(v)) {
+            v.addEventListener('loadedmetadata', () => detectAndApply(v), {
+                once: true,
+            });
+        }
     }
 }
