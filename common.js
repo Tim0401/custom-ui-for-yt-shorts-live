@@ -1,7 +1,12 @@
 //@ts-check
 
-// YouTubeに追加で適用するスタイル
-const s = (aspectRatio = "9 / 16") => (`
+/**
+ * YouTubeに追加で適用するスタイル
+ * @param {number} aspectRatio width / height
+ * @param {number} overlayUIScaleRate オーバーレイUIの拡大率
+ * @returns 
+ */
+const s = (aspectRatio = 9 / 16, overlayUIScaleRate = 0.5625) => (`
 body {
     overflow-x: hidden;
     overflow-y: hidden;
@@ -94,9 +99,10 @@ ytd-watch-flexy[flexy] #primary.ytd-watch-flexy:has(#chat) {
 
 /* オーバーレイUIの調整 */
 .ytp-chrome-bottom {
-    scale: 0.6;
-    width: 90vh !important;
-    margin-left: -18.5vh;
+    transform-origin: left bottom;
+    scale: ${overlayUIScaleRate};
+    width: ${aspectRatio * 100 / overlayUIScaleRate}vh !important;
+    margin-left: -1vh;
 }
 
 /* プログレスバーの消去 */
@@ -137,7 +143,7 @@ const detectAndApply = (v) => {
     console.debug("Check if current video is yt short");
     if (v.offsetHeight > v.offsetWidth) {
         console.debug("Apply style for yt short ");
-        addStyle(s(`${v.offsetWidth} / ${v.offsetHeight}`));
+        addStyle(s(v.offsetWidth / v.offsetHeight));
         return true;
     }
     return false;
