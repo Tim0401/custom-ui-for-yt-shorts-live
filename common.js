@@ -55,7 +55,7 @@ ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
 #player ~ * {
     display: none;
 }
-#below ~ * {
+#below > * {
     display: none;
 }
 ytd-watch-metadata {
@@ -66,20 +66,26 @@ ytd-watch-metadata {
 }
 
 /* チャット欄の調整 */
+ytd-watch-flexy[flexy] #primary.ytd-watch-flexy:has(#chat) {
+    flex-grow: 1 !important;
+}
 #primary-inner {
     display: flex;
+    width: 100%;
     gap: 2vw;
 }
 #below {
-    display: block;
-    width: 400px
+    display: flex;
+}
+#below, #chat-container, #chat {
+    flex-grow: 1; 
 }
 #below > #chat-container {
     display: flex;
     width: fit-content;
 }
 #chat-container > #chat.ytd-watch-flexy:not([collapsed]) {
-    width: 400px;
+    min-width: 300px;
     height: 95vh !important;
 }
 
