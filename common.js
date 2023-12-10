@@ -128,7 +128,7 @@ const detectAndApply = (v) => {
     console.debug("Check if current video is yt short");
     if (v.offsetHeight > v.offsetWidth) {
         console.debug("Apply style for yt short ");
-        addStyle(s());
+        addStyle(s(`${v.offsetWidth} / ${v.offsetHeight}`));
         return true;
     }
     return false;
